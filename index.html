@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[PREVIEW] 包裹什麼時候到？ When Should Your Parcel Arrive?</title>
+<style>
+  :root {
+    --bg: #f6f4ef;
+    --card: #ffffff;
+    --ink: #1f2a2e;
+    --muted: #5f6b6f;
+    --accent: #2f5d62;
+    --accent-ink: #ffffff;
+    --line: #e3e0d8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px 28px 28px;
+    box-shadow: 0 6px 24px rgba(31, 42, 46, 0.06);
+  }
+  .parcel {
+    width: 52px; height: 52px; margin: 0 auto 18px; display: block;
+  }
+  h1 { margin: 0; text-align: center; font-size: 1.45rem; line-height: 1.35; }
+  .h1-en { margin: 6px 0 0; text-align: center; font-size: 1.05rem; font-weight: 600; color: var(--muted); }
+  .divider { height: 1px; background: var(--line); margin: 24px 0; }
+  p { margin: 0 0 14px; line-height: 1.7; font-size: 1rem; }
+  p.en { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+  .choose { text-align: center; font-weight: 600; margin: 26px 0 14px; }
+  .buttons { display: flex; gap: 12px; }
+  .buttons button {
+    flex: 1;
+    font: inherit;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 16px 12px;
+    border-radius: 12px;
+    border: 2px solid var(--accent);
+    background: var(--accent);
+    color: var(--accent-ink);
+    cursor: pointer;
+    transition: transform 0.05s ease, opacity 0.15s ease;
+  }
+  .buttons button.secondary { background: #fff; color: var(--accent); }
+  .buttons button:active { transform: scale(0.98); }
+  .buttons button:focus-visible { outline: 3px solid #9cc3c6; outline-offset: 2px; }
+  .time { text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 18px; }
+  .prize { text-align: center; background: #fdf3e3; border: 1px solid #ecd9b8; border-radius: 10px; padding: 10px 14px; margin-top: 14px; font-size: 0.92rem; line-height: 1.5; }
+  .footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 22px; line-height: 1.5; }
+  .test {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: #fff7e0;
+    border: 1px solid #f0d58a;
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  .test strong { font-size: 1.05rem; }
+  .test button {
+    font: inherit; margin-top: 10px; padding: 6px 12px; border-radius: 8px;
+    border: 1px solid #c9a94a; background: #fff; cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<main class="card">
+  <div style="text-align:center;background:#ffe9e9;border:1px solid #f3b5b5;border-radius:8px;padding:6px;margin-bottom:14px;font-size:0.85rem">PREVIEW FOR REVIEW · English only · 5 of the 15 survey versions</div>
+  <svg class="parcel" viewBox="0 0 64 64" aria-hidden="true">
+    <path d="M32 6 56 18v28L32 58 8 46V18z" fill="#e9dcc3" stroke="#2f5d62" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M8 18l24 12 24-12M32 30v28" fill="none" stroke="#2f5d62" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M20 12l24 12" stroke="#2f5d62" stroke-width="2.5"/>
+  </svg>
+
+  <h1>包裹什麼時候到？網購配送偏好問卷</h1>
+  <p class="h1-en">When Should Your Parcel Arrive? An Online Shopping Survey</p>
+
+  <div class="divider"></div>
+
+  <p>感謝您願意協助填寫這份問卷！您的參與對我的研究非常有幫助，我由衷感謝。開始之前，請選擇您想使用的問卷語言。</p>
+  <p class="en" lang="en">Thank you for your willingness to take part in this survey! Your participation is a great help to my research, and I truly appreciate it. Before we begin, please choose the language you would like to use.</p>
+
+  <div class="choose">請選擇語言 · Please choose a language</div>
+  <div class="buttons">
+    <button type="button" data-lang="ZH">中文</button>
+    <button type="button" class="secondary" data-lang="EN" lang="en">English</button>
+  </div>
+
+  <div class="time">約需 12–15 分鐘 · About 12–15 minutes</div>
+  <div class="prize">🎁 完成問卷可參加星巴克抽獎，獎品價值最高約 NT$900<br><span lang="en">Complete the survey for a chance to win special Starbucks prizes worth up to NT$900</span></div>
+
+  <div class="test" id="test" role="status" aria-live="polite"></div>
+
+  <div class="footer" style="margin-bottom:6px"><a href="#" id="reset" style="color:inherit">Reset (preview only): get a new random survey next time</a></div>
+  <div class="footer">國立臺灣科技大學工業管理系 碩士論文研究<br><span lang="en">Master's thesis research, Industrial Management, NTUST</span></div>
+</main>
+
+<script>
+/* ====================================================================
+   THE 30 SURVEY LINKS
+   Paste each SurveyCake link between the quotes, next to its name.
+   ZH = Chinese surveys, EN = English surveys. M01-M15 as in the overview:
+   M01-M03 Baseline, M04-M06 Process, M07-M09 Green Label,
+   M10-M12 Green Process, M13-M15 Green Outcome (versions 1, 2, 3).
+   While a link is empty, the page runs in TEST MODE: it shows which
+   survey it would have opened instead of opening it.
+   ==================================================================== */
+const LINKS = {
+  ZH: {},
+  EN: {
+    "M01": "https://www.surveycake.com/s/vlnKy",
+    "M04": "https://www.surveycake.com/s/ZvRmd",
+    "M07": "https://www.surveycake.com/s/x6RxP",
+    "M10": "https://www.surveycake.com/s/vlnKP",
+    "M13": "https://www.surveycake.com/s/WpdlZ"
+  }
+};
+
+/* Add #test to the end of the page address to always use test mode
+   (shows the chosen survey, does not open it, does not remember it). */
+const FORCE_TEST = location.hash === "#test";
+const STORE_KEY = "parcel_survey_assignment";
+
+function randomIndex(n) {
+  try {
+    const a = new Uint32Array(1);
+    crypto.getRandomValues(a);
+    return a[0] % n;
+  } catch (e) {
+    return Math.floor(Math.random() * n);
+  }
+}
+
+function remembered(lang) {
+  if (FORCE_TEST) return null;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    return saved[lang] && LINKS[lang][saved[lang]] !== undefined ? saved[lang] : null;
+  } catch (e) { return null; }
+}
+
+function remember(lang, code) {
+  if (FORCE_TEST) return;
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
+    saved[lang] = code;
+    localStorage.setItem(STORE_KEY, JSON.stringify(saved));
+  } catch (e) { /* storage not available: no memory, still random */ }
+}
+
+function forget() {
+  try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+}
+
+function go(lang) {
+  const codes = Object.keys(LINKS[lang]);
+  if (codes.length === 0) {
+    const box = document.getElementById("test");
+    box.style.display = "block";
+    box.innerHTML = "<div><strong>Preview:</strong> the Chinese surveys are not in this preview yet. Please choose English. / 中文問卷尚未加入此預覽版，請先選擇 English。</div>";
+    return;
+  }
+  let code = remembered(lang);
+  if (!code) {
+    code = codes[randomIndex(codes.length)];
+    remember(lang, code);
+  }
+  const url = LINKS[lang][code];
+  if (url && !FORCE_TEST) {
+    window.location.href = url;
+    return;
+  }
+  const box = document.getElementById("test");
+  box.style.display = "block";
+  box.innerHTML =
+    "<div><strong>Test mode:</strong> this would open survey <strong>" + lang + "-" + code + "</strong>.</div>" +
+    "<div>" + (url ? "The link is filled in; remove #test from the address to really go there."
+                   : "Its link has not been added yet.") + "</div>" +
+    "<button type='button' id='again'>Forget my survey and try again</button>";
+  document.getElementById("again").addEventListener("click", function () {
+    forget();
+    box.style.display = "none";
+  });
+}
+
+document.getElementById("reset").addEventListener("click", function (e) {
+  e.preventDefault(); forget();
+  this.textContent = "Done. Your next click will draw a new random survey.";
+});
+
+document.querySelectorAll("button[data-lang]").forEach(function (b) {
+  b.addEventListener("click", function () { go(b.getAttribute("data-lang")); });
+});
+</script>
+</body>
+</html>
